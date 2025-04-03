@@ -12,6 +12,7 @@
    * [Battery](#battery)
    * [Button to safe power on-off](#button-to-safe-power-on-off)
    * [Retropie rom config and backup](#retropie-rom-config-and-backup)
+- [Disclaimer](#disclaimer)
 - [RASPI-GBA-SP Test video](#raspi-gba-sp-test-video)
 
 <!-- TOC end -->
@@ -353,6 +354,11 @@ In Windows we can make a local backup of the roms in case we want have it also:
 ```
 .\rclone.exe sync "dropbox:/RetroPie/roms" "C:/Users/XYZ/example" 
 ```
+
+<!-- TOC --><a name="disclaimer"></a>
+# Disclaimer
+
+It is highly recommended that you use original game files (ROMs) that you own legally. Downloading ROMs from the internet may violate copyright laws and can result in legal issues. Please ensure that you are using ROMs that comply with intellectual property laws and that you have obtained them through legal channels.
 
 <!-- TOC --><a name="raspi-gba-sp-test-video"></a>
 # RASPI-GBA-SP Test video
