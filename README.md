@@ -308,7 +308,7 @@ To backup we install rclone, we can configure many cloud and providers like Drop
 sudo apt install rclone -y && sudo rclone config
 ```
 
-We put the sync command in a script to run before we shutdown the Raspberry Pi:
+We put the sync command in a script to run before we shutdown the Raspberry Pi, if we want to use only 1 emulator we can change the path from /home/pi/RetroPie/roms to /home/pi/RetroPie/roms/gba for example:
 
 ```
 sudo nano /usr/local/bin/sync_roms.sh && sudo chmod +x /usr/local/bin/sync_roms.sh
@@ -329,16 +329,20 @@ sudo nano /etc/systemd/system/before-shutdown.service
 [Unit]
 Description=Run rclone before shutdown
 DefaultDependencies=no
-Before=shutdown.target network.target
-
+After=network-online.target
+Before=shutdown.target reboot.target halt.target
+Conflicts=umount.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/local/bin/sync_roms.sh
-TimeoutStartSec=0
+RemainAfterExit=yes
+ExecStart=/bin/true
+ExecStop=/usr/local/bin/sync_roms.sh
+TimeoutStopSec=600
+KillMode=none
 
 [Install]
-WantedBy=shutdown.target
+WantedBy=multi-user.target
 ```
 
 Now enable:
