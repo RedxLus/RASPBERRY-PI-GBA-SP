@@ -9,7 +9,8 @@
    * [Sound with MAX98357a](#sound-with-max98357a)
    * [Control sound of MAX98357a with potentiometer and PCF8591 ](#control-sound-of-max98357a-with-potentiometer-and-pcf8591)
    * [Adding physical buttons using gpio](#adding-physical-buttons-using-gpio)
-   * [Battery and button to safe power on-off](#battery-and-button-to-safe-power-on-off)
+   * [Battery](#battery)
+   * [Button to safe power on-off](#button-to-safe-power-on-off)
    * [Retropie rom config and backup](#retropie-rom-config-and-backup)
 - [RASPI-GBA-SP Test video](#raspi-gba-sp-test-video)
 
@@ -277,8 +278,17 @@ S         24  # Right shoulder button
 ESC    16 20  # Hold A+B to exit ROM
 ```
 
-<!-- TOC --><a name="battery-and-button-to-safe-power-on-off"></a>
-## Battery and button to safe power on-off
+<!-- TOC --><a name="battery"></a>
+## Battery
+
+For the battery, we're going to use a module that already provides the 5V needed by the Raspberry Pi directly. The IP5310 has worked best for me, and it includes a button to cut off the power supply. This button shouldn't be pressed unless the console is shutdown first.
+
+To connect it we follow the instructions. The battery we connect the black to B- and the red to B+. And on the Raspberry Pi we connect on the back to the 5V pin and to the GND to the module. Remember to buy the module without a USB header otherwise you will have to unsolder it.
+
+<img src="./img/battery-charger-config.png" width="500"/> <img src="./img/add-battery-raspberry.png" width="500"/>
+
+<!-- TOC --><a name="button-to-safe-power-on-off"></a>
+## Button to safe power on-off
 
 As follow: https://howchoo.com/pi/how-to-add-a-power-button-to-your-raspberry-pi/
 
@@ -343,6 +353,7 @@ In Windows we can make a local backup of the roms in case we want have it also:
 ```
 .\rclone.exe sync "dropbox:/RetroPie/roms" "C:/Users/XYZ/example" 
 ```
+
 <!-- TOC --><a name="raspi-gba-sp-test-video"></a>
 # RASPI-GBA-SP Test video
 
